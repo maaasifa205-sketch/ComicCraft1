@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ comic.title }} - ComicCraft
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="hero compact">
+
+        <div class="tag">
+            YOUR COMIC IS READY
+        </div>
+
+        <h1>
+            {{ comic.title }}
+        </h1>
+
+        <p>
+            Five connected panels generated
+            by ComicCraft.
+        </p>
+
+
+        <div class="actions">
+
+            <a
+                class="button"
+                href="{{ comic.pdf_path }}"
+                download
+            >
+                Download PDF
+            </a>
+
+
+            <a
+                class="button secondary"
+                href="/"
+            >
+                Create Another
+            </a>
+
+        </div>
+
+    </header>
+
+
+    {% for panel in comic.panels %}
+
+    <section class="card panel">
+
+        <img
+            src="{{ panel.image_path }}"
+            alt="Panel {{ panel.number }}"
+        >
+
+
+        <div class="panel-content">
+
+            <div class="panel-number">
+                PANEL {{ panel.number }}
+            </div>
+
+
+            <h2>
+                {{ panel.title }}
+            </h2>
+
+
+            <p class="scene">
+                {{ panel.scene_description }}
+            </p>
+
+
+            <div class="caption">
+                {{ panel.caption }}
+            </div>
+
+
+            <p class="narration">
+                {{ panel.narration }}
+            </p>
+
+
+            <details>
+
+                <summary>
+                    Show image prompt
+                </summary>
+
+                <p>
+                    {{ panel.image_prompt }}
+                </p>
+
+            </details>
+
+        </div>
+
+    </section>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

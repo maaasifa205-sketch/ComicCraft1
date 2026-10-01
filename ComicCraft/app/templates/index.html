@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ComicCraft - AI Comic Creator</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="hero">
+
+        <div class="tag">
+            AI COMIC STORY CREATOR
+        </div>
+
+        <h1>
+            ComicCraft
+        </h1>
+
+        <p>
+            Turn your idea into a five-panel comic
+            story with narration, dialogue and
+            illustrations.
+        </p>
+
+    </header>
+
+
+    <section class="card">
+
+        {% if mock_mode %}
+
+        <div class="notice">
+
+            <strong>
+                Demo mode is ON.
+            </strong>
+
+            You can test the complete project
+            without API keys.
+
+            After it works, add Gemini and
+            Hugging Face keys.
+
+        </div>
+
+        {% else %}
+
+        <div class="notice success">
+
+            <strong>
+                Real AI mode is ON.
+            </strong>
+
+            Gemini will create the story and
+            Hugging Face will create the images.
+
+        </div>
+
+        {% endif %}
+
+
+        <form
+            action="/generate"
+            method="post"
+        >
+
+            <label for="story_prompt">
+                1. Story idea
+            </label>
+
+            <textarea
+                id="story_prompt"
+                name="story_prompt"
+                required
+                minlength="5"
+                placeholder="Example: A college student discovers a tiny robot under the library."
+            ></textarea>
+
+
+            <div class="grid">
+
+                <div>
+
+                    <label for="character_name">
+                        2. Main character
+                    </label>
+
+                    <input
+                        id="character_name"
+                        name="character_name"
+                        required
+                        placeholder="Rumi"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="setting">
+                        3. Setting
+                    </label>
+
+                    <input
+                        id="setting"
+                        name="setting"
+                        required
+                        placeholder="College library"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <label for="tone">
+                        4. Tone
+                    </label>
+
+                    <select
+                        id="tone"
+                        name="tone"
+                    >
+
+                        <option>funny</option>
+                        <option>dramatic</option>
+                        <option>mysterious</option>
+                        <option>adventurous</option>
+                        <option>emotional</option>
+                        <option>light-hearted</option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label for="art_style">
+                        5. Art style
+                    </label>
+
+                    <select
+                        id="art_style"
+                        name="art_style"
+                    >
+
+                        <option>comic book</option>
+                        <option>anime</option>
+                        <option>watercolor</option>
+                        <option>pixel art</option>
+                        <option>fantasy illustration</option>
+                        <option>cinematic realistic</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button type="submit">
+                Generate My Comic
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="card steps">
+
+        <h2>
+            How ComicCraft works
+        </h2>
+
+        <div class="step-grid">
+
+            <div>
+                <b>01</b>
+                <span>Story</span>
+                <small>
+                    Gemini creates the five-panel plot.
+                </small>
+            </div>
+
+            <div>
+                <b>02</b>
+                <span>Dialogue</span>
+                <small>
+                    Each panel gets narration and caption.
+                </small>
+            </div>
+
+            <div>
+                <b>03</b>
+                <span>Images</span>
+                <small>
+                    Hugging Face creates panel artwork.
+                </small>
+            </div>
+
+            <div>
+                <b>04</b>
+                <span>Export</span>
+                <small>
+                    Your comic is combined into a PDF.
+                </small>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>
